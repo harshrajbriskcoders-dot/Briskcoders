@@ -1,0 +1,2443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>BriskCoders: Shopify stores built to sell</title>
+  <script src="./vendor/react.js"></script>
+  <script src="./vendor/react-dom.js"></script>
+  <script src="./support.js"></script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&amp;family=Figtree:wght@400;500;600;700;800&amp;family=Cormorant+Garamond:wght@500;600&amp;display=swap"
+        rel="stylesheet">
+      <style>
+        html {
+          scroll-behavior: smooth
+        }
+
+        body {
+          margin: 0;
+          background: #FFFFFF
+        }
+
+        a {
+          color: #A85A00
+        }
+
+        a:hover {
+          color: #7A4100
+        }
+
+        .ic {
+          fill: none;
+          stroke: currentColor;
+          stroke-width: 1.75;
+          stroke-linecap: round;
+          stroke-linejoin: round
+        }
+
+        .ln {
+          fill: none;
+          stroke-width: 2.5;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          vector-effect: non-scaling-stroke
+        }
+
+        .dash {
+          stroke-dasharray: 6 6
+        }
+
+        .gl {
+          stroke-width: 1;
+          vector-effect: non-scaling-stroke
+        }
+
+        .thin {
+          fill: none;
+          stroke-width: 2;
+          stroke-linecap: round
+        }
+
+        .lift {
+          transition: transform .2s ease, filter .2s ease
+        }
+
+        .lift:hover {
+          transform: translateY(-2px);
+          filter: brightness(.95)
+        }
+
+        .navlink {
+          transition: color .15s ease
+        }
+
+        .navlink:hover {
+          color: #A85A00 !important
+        }
+
+        .scroller {
+          scroll-behavior: smooth
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        summary:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+          outline: 3px solid #F4900C;
+          outline-offset: 3px
+        }
+
+        input:focus,
+        textarea:focus {
+          border-color: #000000 !important;
+          outline: none
+        }
+
+        .rot-track {
+          animation: rot 10s cubic-bezier(.75, 0, .2, 1) infinite
+        }
+
+        @keyframes rot {
+
+          0%,
+          20% {
+            transform: translateY(0)
+          }
+
+          25%,
+          45% {
+            transform: translateY(-1.15em)
+          }
+
+          50%,
+          70% {
+            transform: translateY(-2.3em)
+          }
+
+          75%,
+          95% {
+            transform: translateY(-3.45em)
+          }
+
+          100% {
+            transform: translateY(-4.6em)
+          }
+        }
+
+        .scr {
+          position: absolute;
+          inset: 0;
+          animation: scr 12s infinite both
+        }
+
+        .scr2 {
+          animation-delay: 4s
+        }
+
+        .scr3 {
+          animation-delay: 8s
+        }
+
+        @keyframes scr {
+          0% {
+            opacity: 0;
+            transform: translateY(16px)
+          }
+
+          4% {
+            opacity: 1;
+            transform: none
+          }
+
+          33% {
+            opacity: 1;
+            transform: none
+          }
+
+          37% {
+            opacity: 0;
+            transform: translateY(-12px)
+          }
+
+          100% {
+            opacity: 0
+          }
+        }
+
+        .toast {
+          animation: toast 8s infinite both
+        }
+
+        .toast2 {
+          animation-delay: 4s
+        }
+
+        @keyframes toast {
+          0% {
+            opacity: 0;
+            transform: translateY(14px) scale(.96)
+          }
+
+          6% {
+            opacity: 1;
+            transform: none
+          }
+
+          40% {
+            opacity: 1;
+            transform: none
+          }
+
+          47% {
+            opacity: 0;
+            transform: translateY(-10px)
+          }
+
+          100% {
+            opacity: 0
+          }
+        }
+
+        .marquee {
+          animation: marq 38s linear infinite
+        }
+
+        @keyframes marq {
+          from {
+            transform: translateX(0)
+          }
+
+          to {
+            transform: translateX(-50%)
+          }
+        }
+
+        .pulse {
+          animation: pulse 2s ease-out infinite
+        }
+
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(30, 127, 79, .45)
+          }
+
+          100% {
+            box-shadow: 0 0 0 10px rgba(30, 127, 79, 0)
+          }
+        }
+
+        .pcard {
+          position: sticky;
+          transition: transform .45s cubic-bezier(.2, .7, .2, 1), filter .45s ease;
+          transform-origin: 50% 0
+        }
+
+        .pc1 {
+          top: 96px
+        }
+
+        .pc2 {
+          top: 116px
+        }
+
+        .pc3 {
+          top: 136px
+        }
+
+        .pc4 {
+          top: 156px
+        }
+
+        .port-aside {
+          position: sticky;
+          top: 110px
+        }
+
+        .noscroll {
+          scrollbar-width: none
+        }
+
+        .noscroll::-webkit-scrollbar {
+          display: none
+        }
+
+        details summary {
+          list-style: none;
+          cursor: pointer
+        }
+
+        details summary::-webkit-details-marker {
+          display: none
+        }
+
+        .faq-ic {
+          transition: transform .2s ease
+        }
+
+        details[open] .faq-ic {
+          transform: rotate(45deg)
+        }
+
+        .leak {
+          transition: border-color .2s ease, background-color .2s ease
+        }
+
+        .mbar {
+          display: none
+        }
+
+        .m-only {
+          display: none !important
+        }
+
+        @media (max-width:960px) {
+          .nav-links {
+            display: none !important
+          }
+
+          .port-aside {
+            position: static
+          }
+
+          .port-list {
+            display: none !important
+          }
+        }
+
+        @media (max-width:767px) {
+          .d-only {
+            display: none !important
+          }
+
+          .m-only {
+            display: flex !important
+          }
+
+          .mbar {
+            display: flex
+          }
+
+          .page-end {
+            padding-bottom: 110px !important
+          }
+
+          .stats {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important
+          }
+
+          .lgrid {
+            grid-template-columns: minmax(0, 1fr) !important
+          }
+
+          .steps {
+            grid-template-columns: minmax(0, 1fr) !important
+          }
+
+          .step-line {
+            display: none !important
+          }
+
+          .pc1 {
+            top: 64px
+          }
+
+          .pc2 {
+            top: 74px
+          }
+
+          .pc3 {
+            top: 84px
+          }
+
+          .pc4 {
+            top: 94px
+          }
+
+          .hero-cta a {
+            flex: 1 1 100% !important
+          }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+          html,
+          .scroller {
+            scroll-behavior: auto
+          }
+
+          .rot-track,
+          .marquee,
+          .toast,
+          .pulse {
+            animation: none !important
+          }
+
+          .scr {
+            animation: none !important;
+            opacity: 0
+          }
+
+          .scr1 {
+            opacity: 1
+          }
+
+          .pcard,
+          .lift,
+          .faq-ic,
+          .navlink,
+          .leak {
+            transition: none !important
+          }
+        }
+      </style>
+    </helmet>
+    <div id="top" class="scroller"
+      style="font-family: Figtree, ui-sans-serif, system-ui, sans-serif; color: #000000; background: #FFFFFF; -webkit-font-smoothing: antialiased">
+
+      <!-- ============ HEADER ============ -->
+      <header
+        style="position: sticky; top: 0; z-index: 50; background: rgba(255,244,229,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(168,90,0,0.12)">
+        <div
+          style="max-width: 1240px; margin: 0 auto; padding: 10px clamp(20px, 4vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 20px">
+          <a href="#top" aria-label="BriskCoders home" style="display: block; flex: none"><img
+              src="./assets/e0e519c4a94a514a05997c1af0b75bb5.png" alt="BriskCoders"
+              style="height: 38px; width: auto; display: block"></a>
+          <nav class="nav-links" aria-label="Main" style="display: flex; gap: 30px; font-size: 15px; font-weight: 500">
+            <a class="navlink" href="#work" style="color: #000000; text-decoration: none">Work</a>
+            <a class="navlink" href="#results" style="color: #000000; text-decoration: none">Results</a>
+            <a class="navlink" href="#process" style="color: #000000; text-decoration: none">Process</a>
+            <a class="navlink" href="#reviews" style="color: #000000; text-decoration: none">Reviews</a>
+            <a class="navlink" href="#faq" style="color: #000000; text-decoration: none">FAQ</a>
+          </nav>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <a class="lift d-only" href="https://wa.me/"
+              style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #000000; color: #000000; font-weight: 600; font-size: 15px; text-decoration: none; box-sizing: border-box"><svg
+                viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                <path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"></path>
+                <path d="M9 9.5c.3 2.4 2.1 4.2 4.5 4.5"></path>
+              </svg>WhatsApp</a>
+            <a class="lift d-only" href="#contact"
+              style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: #F4900C; color: #000000; font-weight: 700; font-size: 15px; text-decoration: none">Get
+              a free audit</a>
+            <a class="m-only" href="https://calendly.com/"
+              style="align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1.5px solid #000000; color: #000000; font-weight: 600; font-size: 14px; text-decoration: none; box-sizing: border-box">Book
+              a call</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============ HERO ============ -->
+      <section
+        style="background: #FFF4E5; overflow: hidden; padding: clamp(24px, 4vw, 64px) clamp(20px, 4vw, 40px) clamp(40px, 5vw, 72px)">
+        <div
+          style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px 56px">
+          <div
+            style="flex: 1.25 1 520px; min-width: 0; display: flex; flex-direction: column; gap: clamp(16px, 2vw, 24px)">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <span
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 8px; border-radius: 999px; background: #FFFFFF; border: 1px solid #EADBC6; font-size: 13px; font-weight: 600"><span
+                  style="width: 20px; height: 20px; border-radius: 50%; background: #F4900C; display: flex; align-items: center; justify-content: center"><svg
+                    viewBox="0 0 24 24" class="ic" style="width: 12px; height: 12px; stroke-width: 3"
+                    aria-hidden="true">
+                    <path d="M5 12l5 5 9-10"></path>
+                  </svg></span>Shopify Select Partner</span>
+              <span
+                style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid #EADBC6; font-size: 13px; font-weight: 600"><svg
+                  viewBox="0 0 24 24" style="width: 15px; height: 15px; color: #F4900C" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg>5.0 rating on Shopify</span>
+            </div>
+            <h1
+              style="font-family: Unbounded, 'Arial Black', sans-serif; font-weight: 600; font-size: clamp(30px, 4.4vw, 62px); line-height: 1.12; letter-spacing: -0.03em; margin: 0">
+              <span style="display: block">Shopify stores</span>
+              <span style="display: block">built to</span>
+              <span
+                style="display: inline-block; vertical-align: top; height: 1.15em; overflow: hidden; background: #F4900C; border-radius: 0.14em; padding: 0 0.18em; margin-top: 0.06em">
+                <span class="rot-track" style="display: block">
+                  <span style="display: block; height: 1.15em; line-height: 1.15">sell more.</span>
+                  <span style="display: block; height: 1.15em; line-height: 1.15" aria-hidden="true">convert.</span>
+                  <span style="display: block; height: 1.15em; line-height: 1.15" aria-hidden="true">load fast.</span>
+                  <span style="display: block; height: 1.15em; line-height: 1.15" aria-hidden="true">scale.</span>
+                  <span style="display: block; height: 1.15em; line-height: 1.15" aria-hidden="true">sell more.</span>
+                </span>
+              </span>
+            </h1>
+            <p
+              style="margin: 0; font-size: clamp(16px, 1.35vw, 19px); line-height: 1.55; color: #3D3D3D; max-width: 46ch">
+              Custom, hand-coded Shopify stores that load fast and turn clicks into orders. Live in 4–6 weeks, with 30
+              days of support included.</p>
+            <div class="hero-cta" style="display: flex; flex-wrap: wrap; gap: 10px">
+              <a class="lift" href="#contact"
+                style="flex: 0 1 auto; display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 28px; border-radius: 999px; background: #F4900C; color: #000000; font-weight: 700; font-size: 17px; text-decoration: none; box-sizing: border-box">Get
+                my free store audit</a>
+              <a class="lift" href="https://wa.me/"
+                style="flex: 0 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 26px; border-radius: 999px; background: #000000; color: #FFFFFF; font-weight: 700; font-size: 17px; text-decoration: none; box-sizing: border-box"><svg
+                  viewBox="0 0 24 24" class="ic" style="width: 20px; height: 20px" aria-hidden="true">
+                  <path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"></path>
+                  <path d="M9 9.5c.3 2.4 2.1 4.2 4.5 4.5"></path>
+                </svg>Chat on WhatsApp</a>
+            </div>
+            <div
+              style="display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; font-weight: 500; color: #3D3D3D">
+              <span style="display: inline-flex; align-items: center; gap: 7px"><span class="pulse"
+                  style="width: 8px; height: 8px; border-radius: 50%; background: #1E7F4F; display: block"></span>Replies
+                within 2 hours</span>
+              <span style="display: inline-flex; align-items: center; gap: 6px"><svg viewBox="0 0 24 24" class="ic"
+                  style="width: 16px; height: 16px; color: #A85A00" aria-hidden="true">
+                  <path d="M5 12l5 5 9-10"></path>
+                </svg>Free quote</span>
+              <span style="display: inline-flex; align-items: center; gap: 6px"><svg viewBox="0 0 24 24" class="ic"
+                  style="width: 16px; height: 16px; color: #A85A00" aria-hidden="true">
+                  <path d="M5 12l5 5 9-10"></path>
+                </svg>NDA-friendly</span>
+            </div>
+          </div>
+
+          <!-- hero visual -->
+          <div
+            style="flex: 1 1 380px; min-width: 0; position: relative; display: flex; justify-content: center; padding: 8px 0 0">
+            <div aria-hidden="true"
+              style="position: absolute; left: 50%; top: 46%; width: clamp(320px, 31vw, 440px); height: clamp(320px, 31vw, 440px); transform: translate(-42%, -50%); border-radius: 50%; border: clamp(34px, 3vw, 46px) solid #F4900C; box-sizing: border-box">
+            </div>
+            <div
+              style="position: relative; z-index: 1; width: 272px; height: 560px; border-radius: 44px; background: #000000; padding: 9px; box-sizing: border-box; box-shadow: 0 40px 80px -30px rgba(90,45,0,0.55)">
+              <div
+                style="position: relative; width: 100%; height: 100%; border-radius: 36px; overflow: hidden; background: #FFFFFF">
+                <div aria-hidden="true"
+                  style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 12px; background: #000000; z-index: 5">
+                </div>
+
+                <!-- screen 1: jewelry home -->
+                <div class="scr scr1" aria-hidden="true"
+                  style="background: #FBF6F2; display: flex; flex-direction: column">
+                  <div
+                    style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #3A2418">
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M4 7h16M4 12h16M4 17h10"></path>
+                    </svg>
+                    <span
+                      style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-weight: 600; letter-spacing: 0.35em">LUNE</span>
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M6 8h12l-1 12H7z"></path>
+                      <path d="M9 8a3 3 0 0 1 6 0"></path>
+                    </svg>
+                  </div>
+                  <div
+                    style="position: relative; margin: 0 12px; height: 296px; border-radius: 18px; background: #E9D3C6; overflow: hidden">
+                    <svg viewBox="0 0 200 170" style="position: absolute; top: 6px; left: 0; width: 100%; height: auto">
+                      <circle cx="100" cy="70" r="66" fill="#F1E1D6"></circle>
+                      <path class="thin" stroke="#C9A15B" d="M34 6 Q100 120 166 6"></path>
+                      <path class="thin" stroke="#C9A15B" d="M100 63 L100 74"></path>
+                      <path fill="#C9A15B" d="M100 74 c-10 0 -16 10 -10 20 l10 14 l10 -14 c6 -10 0 -20 -10 -20z"></path>
+                      <circle cx="100" cy="88" r="4.5" fill="#FFF7EE"></circle>
+                    </svg>
+                    <div
+                      style="position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px">
+                      <span
+                        style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 0.98; font-weight: 600; color: #3A2418">Forever
+                        love letters</span>
+                      <span
+                        style="align-self: flex-start; background: #FFFFFF; color: #3A2418; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 999px">Shop
+                        the collection</span>
+                    </div>
+                  </div>
+                  <div
+                    style="padding: 14px 14px 6px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #3A2418">
+                    <span>Bestsellers</span><span style="font-weight: 500; text-decoration: underline">View all</span>
+                  </div>
+                  <div style="display: flex; gap: 8px; padding: 4px 12px">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+                      <div
+                        style="height: 92px; border-radius: 12px; background: #F1E6DE; display: flex; align-items: center; justify-content: center">
+                        <svg viewBox="0 0 60 60" style="width: 52px; height: 52px">
+                          <circle cx="30" cy="36" r="13" class="thin" stroke="#C9A15B" style="stroke-width: 4"></circle>
+                          <path d="M24 20 l6 -8 l6 8 l-6 6z" fill="#E8EEF3" stroke="#C9A15B"></path>
+                        </svg>
+                      </div><span style="font-size: 10px; font-weight: 600; color: #3A2418">Solitaire
+                        ring</span><span style="font-size: 10px; color: #6B5A50">₹4,999</span>
+                    </div>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+                      <div
+                        style="height: 92px; border-radius: 12px; background: #F1E6DE; display: flex; align-items: center; justify-content: center">
+                        <svg viewBox="0 0 60 60" style="width: 52px; height: 52px">
+                          <circle cx="21" cy="36" r="9" class="thin" stroke="#C9A15B" style="stroke-width: 3"></circle>
+                          <circle cx="39" cy="36" r="9" class="thin" stroke="#C9A15B" style="stroke-width: 3"></circle>
+                          <circle cx="21" cy="22" r="2.5" fill="#C9A15B"></circle>
+                          <circle cx="39" cy="22" r="2.5" fill="#C9A15B"></circle>
+                        </svg>
+                      </div><span style="font-size: 10px; font-weight: 600; color: #3A2418">Gold
+                        hoops</span><span style="font-size: 10px; color: #6B5A50">₹3,299</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- screen 2: aquarium product page -->
+                <div class="scr scr2" aria-hidden="true"
+                  style="background: #FFFFFF; display: flex; flex-direction: column">
+                  <div
+                    style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #0E2A47">
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M4 7h16M4 12h16M4 17h10"></path>
+                    </svg>
+                    <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.22em">REEFLINE</span>
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M6 8h12l-1 12H7z"></path>
+                      <path d="M9 8a3 3 0 0 1 6 0"></path>
+                    </svg>
+                  </div>
+                  <div
+                    style="margin: 0 12px; height: 200px; border-radius: 14px; background: #EAF1F7; display: flex; align-items: center; justify-content: center">
+                    <svg viewBox="0 0 200 160" style="width: 190px; height: auto">
+                      <rect x="34" y="12" width="132" height="6" rx="3" fill="#1E2A38"></rect>
+                      <rect x="30" y="20" width="140" height="92" rx="6" fill="#2D7DD2"></rect>
+                      <rect x="30" y="20" width="140" height="10" fill="#8EC3F0"></rect>
+                      <rect x="30" y="96" width="140" height="16" fill="#E9D8B4"></rect>
+                      <circle cx="58" cy="92" r="10" fill="#F27A9B"></circle>
+                      <circle cx="72" cy="90" r="7" fill="#F7A440"></circle>
+                      <path class="thin" stroke="#F4900C" style="stroke-width: 4"
+                        d="M128 98 L128 70 M128 82 L118 66 M128 78 L140 62"></path>
+                      <ellipse cx="100" cy="50" rx="9" ry="5" fill="#FFD23F"></ellipse>
+                      <path d="M91 50 l-7 -5 v10z" fill="#FFD23F"></path>
+                      <ellipse cx="146" cy="64" rx="6" ry="3.5" fill="#FFFFFF"></ellipse>
+                      <rect x="40" y="112" width="120" height="42" rx="4" fill="#1E2A38"></rect>
+                    </svg>
+                  </div>
+                  <div style="display: flex; gap: 6px; padding: 10px 12px 0">
+                    <span
+                      style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; border: 2px solid #0E2A47; box-sizing: border-box; display: block"></span><span
+                      style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span><span
+                      style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span><span
+                      style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span>
+                  </div>
+                  <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 5px; color: #0E2A47">
+                    <span style="font-size: 10px; font-weight: 700; color: #1E7F4F">In stock, ships Friday</span>
+                    <span style="font-size: 15px; font-weight: 700; line-height: 1.2">Nano Reef Aquarium 75L</span>
+                    <span style="font-size: 10px; color: #4A5A6A">★★★★★ 128 reviews</span>
+                    <span style="font-size: 17px; font-weight: 800">£849.00</span>
+                  </div>
+                  <div
+                    style="margin-top: auto; padding: 10px 12px 18px; border-top: 1px solid #E7ECF1; display: flex; gap: 8px">
+                    <span
+                      style="width: 48px; border: 1px solid #CBD5DF; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #0E2A47">1</span>
+                    <span
+                      style="flex: 1; background: #1F5FBF; color: #FFFFFF; font-size: 13px; font-weight: 700; text-align: center; padding: 12px; border-radius: 999px">Add
+                      to cart</span>
+                  </div>
+                </div>
+
+                <!-- screen 3: herbal tea product card -->
+                <div class="scr scr3" aria-hidden="true"
+                  style="background: #F4F1EA; display: flex; flex-direction: column">
+                  <div
+                    style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #1F3B2A">
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M4 7h16M4 12h16M4 17h10"></path>
+                    </svg>
+                    <span
+                      style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; letter-spacing: 0.08em">Leaf
+                      &amp; Root</span>
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                      <path d="M6 8h12l-1 12H7z"></path>
+                      <path d="M9 8a3 3 0 0 1 6 0"></path>
+                    </svg>
+                  </div>
+                  <div style="margin: 0 12px; background: #FFFFFF; border-radius: 16px; overflow: hidden">
+                    <div
+                      style="position: relative; height: 196px; background: #EEF2EA; display: flex; align-items: center; justify-content: center">
+                      <span
+                        style="position: absolute; top: 10px; left: 10px; background: #1F6B45; color: #FFFFFF; font-size: 8px; font-weight: 800; letter-spacing: 0.08em; padding: 4px 7px; border-radius: 4px">BESTSELLER</span>
+                      <div
+                        style="width: 94px; height: 134px; border-radius: 6px; background: #2F6B3F; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 14px 24px -12px rgba(0,0,0,0.5)">
+                        <span style="font-size: 7px; font-weight: 700; color: #F6E7A1; letter-spacing: 0.12em">LEAF
+                          &amp; ROOT</span>
+                        <span
+                          style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 700; color: #F6E7A1; line-height: 1">12</span>
+                        <span style="font-size: 7px; font-weight: 800; color: #FFFFFF; letter-spacing: 0.1em">SUGAR
+                          BALANCE</span>
+                      </div>
+                    </div>
+                    <div
+                      style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; color: #1F3B2A">
+                      <div style="display: flex; gap: 4px"><span
+                          style="background: #F6E7A1; font-size: 8px; font-weight: 700; padding: 3px 7px; border-radius: 999px">Herbal</span><span
+                          style="background: #F6E7A1; font-size: 8px; font-weight: 700; padding: 3px 7px; border-radius: 999px">Organic</span>
+                      </div>
+                      <span style="font-size: 14px; font-weight: 700">Sugar Balance Herbal Tea</span>
+                      <span style="font-size: 10px; color: #5B6B60">Clove, ginger and cumin blend</span>
+                      <div style="display: flex; gap: 5px; font-size: 9px; font-weight: 700"><span
+                          style="border: 1px solid #CFD8D1; padding: 5px 8px; border-radius: 6px">1 pack</span><span
+                          style="border: 1px solid #CFD8D1; padding: 5px 8px; border-radius: 6px">2 pack</span><span
+                          style="background: #1F6B45; color: #FFFFFF; padding: 5px 8px; border-radius: 6px">3
+                          pack</span></div>
+                      <div
+                        style="position: relative; margin-top: 4px; background: #1F6B45; color: #FFFFFF; display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 8px; font-size: 11px; font-weight: 800">
+                        <span>ADD TO CART</span><span>₹949</span><span
+                          style="position: absolute; right: 6px; top: -9px; background: #C2362B; font-size: 8px; padding: 2px 6px; border-radius: 4px">15%
+                          OFF</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- floating order toasts -->
+            <div class="toast" aria-hidden="true"
+              style="position: absolute; z-index: 2; left: 0; top: 30%; display: flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 16px; padding: 10px 14px 10px 10px; box-shadow: 0 18px 40px -16px rgba(90,45,0,0.45)">
+              <span
+                style="width: 36px; height: 36px; border-radius: 10px; background: #F4900C; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                  viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                  <path d="M6 8h12l-1 12H7z"></path>
+                  <path d="M9 8a3 3 0 0 1 6 0"></path>
+                </svg></span>
+              <span style="display: flex; flex-direction: column; gap: 1px"><span
+                  style="font-size: 13px; font-weight: 700">New order #4821</span><span
+                  style="font-size: 12px; color: #5C5C5C">₹2,847, just now</span></span>
+            </div>
+            <div class="toast toast2" aria-hidden="true"
+              style="position: absolute; z-index: 2; right: 0; bottom: 16%; display: flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 16px; padding: 10px 14px 10px 10px; box-shadow: 0 18px 40px -16px rgba(90,45,0,0.45)">
+              <span
+                style="width: 36px; height: 36px; border-radius: 10px; background: #000000; color: #F4900C; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                  viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px">
+                  <path d="M3 4h2l2.4 11h10.2l2-8H6.3"></path>
+                  <circle cx="9" cy="19.5" r="1.5"></circle>
+                  <circle cx="17" cy="19.5" r="1.5"></circle>
+                </svg></span>
+              <span style="display: flex; flex-direction: column; gap: 1px"><span
+                  style="font-size: 13px; font-weight: 700">Added to cart</span><span
+                  style="font-size: 12px; color: #5C5C5C">3 pack, Herbal Tea</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- stats -->
+        <div class="stats"
+          style="max-width: 1240px; margin: clamp(32px, 4vw, 56px) auto 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: #EADBC6; border: 1px solid #EADBC6; border-radius: 24px; overflow: hidden">
+          <div
+            style="background: #FFFFFF; padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px); display: flex; flex-direction: column; gap: 4px">
+            <span
+              style="font-family: Unbounded, sans-serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.02em">800+</span><span
+              style="font-size: 14px; color: #5C5C5C">Shopify stores built</span>
+          </div>
+          <div
+            style="background: #FFFFFF; padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px); display: flex; flex-direction: column; gap: 4px">
+            <span
+              style="font-family: Unbounded, sans-serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.02em">3.2x</span><span
+              style="font-size: 14px; color: #5C5C5C">Average conversion lift</span>
+          </div>
+          <div
+            style="background: #FFFFFF; padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px); display: flex; flex-direction: column; gap: 4px">
+            <span
+              style="font-family: Unbounded, sans-serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.02em">4–6
+              wks</span><span style="font-size: 14px; color: #5C5C5C">From kickoff to launch</span>
+          </div>
+          <div
+            style="background: #FFFFFF; padding: clamp(16px, 2vw, 24px) clamp(16px, 2vw, 28px); display: flex; flex-direction: column; gap: 4px">
+            <span
+              style="font-family: Unbounded, sans-serif; font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.02em">98%</span><span
+              style="font-size: 14px; color: #5C5C5C">Client satisfaction</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CLIENT MARQUEE ============ -->
+      <section aria-label="Brands we've worked with"
+        style="background: #FFFFFF; padding: 28px 0; border-bottom: 1px solid #F0E6D8; display: flex; flex-direction: column; gap: 16px">
+        <p style="margin: 0; text-align: center; font-size: 14px; font-weight: 600; color: #5C5C5C">Trusted by growing
+          Shopify brands</p>
+        <div style="overflow: hidden">
+          <div class="marquee" style="display: flex; width: max-content">
+            <div
+              style="display: flex; gap: 56px; padding-right: 56px; font-size: 22px; font-weight: 700; color: #8A7F72; letter-spacing: -0.01em; white-space: nowrap">
+              <span>Surahi</span><span>Ayurdhaara</span><span>Triphal</span><span>Sewfect</span><span>Bloom
+                Makhana</span><span>Skin Basics</span><span>Amarose</span><span>Biotastic</span><span>Medz
+                International</span><span>Ultimate Adventure</span>
+            </div>
+            <div aria-hidden="true"
+              style="display: flex; gap: 56px; padding-right: 56px; font-size: 22px; font-weight: 700; color: #8A7F72; letter-spacing: -0.01em; white-space: nowrap">
+              <span>Surahi</span><span>Ayurdhaara</span><span>Triphal</span><span>Sewfect</span><span>Bloom
+                Makhana</span><span>Skin Basics</span><span>Amarose</span><span>Biotastic</span><span>Medz
+                International</span><span>Ultimate Adventure</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEAK CHECKER ============ -->
+      <section id="leaks"
+        style="background: #000000; color: #FFFFFF; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div
+          style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-start">
+          <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0">
+              Is your store leaking sales?</h2>
+            <p
+              style="margin: 0; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: #CFCFCF; max-width: 40ch">
+              You're paying for every click from Instagram. Tap anything that sounds like your store, and see how we fix
+              it.</p>
+          </div>
+          <div style="flex: 1.7 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+            <div class="lgrid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+
+              <button type="button" class="leak" aria-pressed="{{l0.pressed}}" onClick="{{l0.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l0.border}}; background: {{l0.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M12 7v5l3 2"></path>
+                    </svg><span style="font-size: 17px; font-weight: 700">Slow loading pages</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l0.boxBorder}}; background: {{l0.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l0.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">Paid clicks bounce before the page even
+                  appears.</span>
+                <sc-if value="{{l0.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: a lightweight,
+                    hand-coded theme. Our builds load in 1.4s on average.</span></sc-if>
+              </button>
+
+              <button type="button" class="leak" aria-pressed="{{l1.pressed}}" onClick="{{l1.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l1.border}}; background: {{l1.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg><span style="font-size: 17px; font-weight: 700">A weak first screen</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l1.boxBorder}}; background: {{l1.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l1.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">Shoppers decide in seconds, then close
+                  the tab.</span>
+                <sc-if value="{{l1.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: a first screen
+                    built around your best offer, proof and one clear action.</span></sc-if>
+              </button>
+
+              <button type="button" class="leak" aria-pressed="{{l2.pressed}}" onClick="{{l2.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l2.border}}; background: {{l2.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path>
+                      <path d="M14 3v5h5M10 12.5a2 2 0 1 1 2.5 1.9c-.3.1-.5.4-.5.7v.4M12 18h.01"></path>
+                    </svg><span style="font-size: 17px; font-weight: 700">Thin product pages</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l2.boxBorder}}; background: {{l2.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l2.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">Missing details make ready buyers
+                  hesitate.</span>
+                <sc-if value="{{l2.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: product pages
+                    with fast galleries, trust badges, reviews and a sticky add-to-cart.</span></sc-if>
+              </button>
+
+              <button type="button" class="leak" aria-pressed="{{l3.pressed}}" onClick="{{l3.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l3.border}}; background: {{l3.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <circle cx="6" cy="19" r="2"></circle>
+                      <circle cx="18" cy="5" r="2"></circle>
+                      <path d="M8 19h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"></path>
+                    </svg><span style="font-size: 17px; font-weight: 700">A clunky checkout path</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l3.boxBorder}}; background: {{l3.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l3.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">Extra steps lose people who were ready
+                  to pay.</span>
+                <sc-if value="{{l3.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: a slide-out
+                    cart and a shorter, thumb-friendly path to checkout.</span></sc-if>
+              </button>
+
+              <button type="button" class="leak" aria-pressed="{{l4.pressed}}" onClick="{{l4.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l4.border}}; background: {{l4.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <path
+                        d="M12 3v18M17 6.5c-1-1.2-2.8-2-5-2-2.8 0-4.5 1.3-4.5 3.2 0 4.3 9.5 2.3 9.5 6.9 0 2-2 3.4-5 3.4-2.3 0-4.2-.9-5.2-2.3">
+                      </path>
+                    </svg><span style="font-size: 17px; font-weight: 700">Small order values</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l4.boxBorder}}; background: {{l4.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l4.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">No bundles or upsells, so margins stay
+                  thin.</span>
+                <sc-if value="{{l4.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: custom product
+                    cards with pack offers, quick view and cross-sells.</span></sc-if>
+              </button>
+
+              <button type="button" class="leak" aria-pressed="{{l5.pressed}}" onClick="{{l5.toggle}}"
+                style="text-align: left; display: flex; flex-direction: column; gap: 8px; padding: 18px 18px 20px; border-radius: 20px; border: 1.5px solid {{l5.border}}; background: {{l5.bg}}; color: #FFFFFF; font-family: Figtree, sans-serif; cursor: pointer">
+                <span
+                  style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%"><span
+                    style="display: flex; align-items: center; gap: 12px"><svg viewBox="0 0 24 24" class="ic"
+                      style="width: 24px; height: 24px; color: #F4900C; flex: none" aria-hidden="true">
+                      <path d="M3 4h2l2.4 11h10.2l2-8H6.3"></path>
+                      <circle cx="9" cy="19.5" r="1.5"></circle>
+                      <circle cx="17" cy="19.5" r="1.5"></circle>
+                      <path d="M11 8l4 4M15 8l-4 4"></path>
+                    </svg><span style="font-size: 17px; font-weight: 700">Abandoned carts</span></span><span
+                    style="width: 24px; height: 24px; border-radius: 7px; border: 2px solid {{l5.boxBorder}}; background: {{l5.box}}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex: none"><svg
+                      viewBox="0 0 24 24" class="ic"
+                      style="width: 14px; height: 14px; stroke-width: 3; color: {{l5.tick}}" aria-hidden="true">
+                      <path d="M5 12l5 5 9-10"></path>
+                    </svg></span></span>
+                <span style="font-size: 15px; line-height: 1.5; color: #BDBDBD">Shoppers add to cart, then never come
+                  back.</span>
+                <sc-if value="{{l5.on}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 15px; line-height: 1.5; color: #FFB75E; font-weight: 600">Our fix: clear costs up
+                    front, trust signals at checkout and fewer reasons to stall.</span></sc-if>
+              </button>
+            </div>
+
+            <div
+              style="background: #161616; border: 1px solid #2E2E2E; border-radius: 22px; padding: 20px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+              <div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+                <div style="display: flex; align-items: baseline; gap: 10px"><span
+                    style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 600; color: #F4900C; line-height: 1">{{leakCount}}</span><span
+                    style="font-size: 16px; font-weight: 600">of 6 leaks found</span></div>
+                <div style="height: 8px; border-radius: 4px; background: #2E2E2E; overflow: hidden">
+                  <div
+                    style="height: 8px; border-radius: 4px; background: #F4900C; width: {{meterW}}; transition: width .35s ease">
+                  </div>
+                </div>
+                <sc-if value="{{noLeaks}}" hint-placeholder-val="{{ true }}"><span
+                    style="font-size: 14px; color: #BDBDBD">Tap the problems you recognize above.</span></sc-if>
+                <sc-if value="{{hasLeaks}}" hint-placeholder-val="{{ false }}"><span
+                    style="font-size: 14px; color: #E0E0E0">Each one costs you orders from traffic you already paid
+                    for.</span></sc-if>
+              </div>
+              <a class="lift" href="#contact"
+                style="flex: 0 1 auto; display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 26px; border-radius: 999px; background: #F4900C; color: #000000; font-weight: 700; font-size: 16px; text-decoration: none">Fix
+                my leaks: free audit</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RESULTS / DASHBOARD ============ -->
+      <section id="results" style="background: #FFF4E5; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 16px 64px; align-items: flex-end; justify-content: space-between">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0; max-width: 17ch">
+              Real sales from a client's Shopify admin</h2>
+            <p
+              style="margin: 0; max-width: 42ch; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: #3D3D3D">
+              [Client name] relaunched with BriskCoders in [month, year]. This is their store [X] months later.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+            <div style="flex: 2.4 1 620px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+              <span
+                style="align-self: flex-end; background: #000000; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px">Sample
+                screen: swap in your client's screenshot</span>
+              <div
+                style="background: #F6F6F4; color: #1A1A1A; border-radius: 20px; overflow: hidden; border: 1px solid #E3D3BD; box-shadow: 0 30px 70px -40px rgba(90,45,0,0.45)">
+                <div
+                  style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 12px 18px; background: #FFFFFF; border-bottom: 1px solid #E7E5E1">
+                  <div style="display: flex; align-items: center; gap: 10px"><span
+                      style="width: 30px; height: 30px; border-radius: 8px; background: #F4900C; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">S</span><span
+                      style="font-weight: 600; font-size: 14px">[Client store]</span></div>
+                  <div
+                    style="flex: 0 1 300px; height: 34px; border-radius: 8px; background: #F1F0EE; color: #6B6B6B; font-size: 13px; display: flex; align-items: center; gap: 8px; padding: 0 12px; box-sizing: border-box">
+                    <svg viewBox="0 0 24 24" class="ic" style="width: 15px; height: 15px" aria-hidden="true">
+                      <circle cx="11" cy="11" r="7"></circle>
+                      <path d="M20 20l-4-4"></path>
+                    </svg>Search
+                  </div>
+                </div>
+                <div style="padding: clamp(14px, 2vw, 24px); display: flex; flex-direction: column; gap: 16px">
+                  <div
+                    style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between">
+                    <span style="font-weight: 700; font-size: 19px">Sales overview</span><span
+                      style="background: #FFFFFF; border: 1px solid #DCD9D4; border-radius: 8px; padding: 6px 12px; font-size: 13px; font-weight: 500">Last
+                      30 days</span>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                    <div
+                      style="flex: 1 1 140px; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+                      <span style="font-size: 13px; color: #5E5E5E; font-weight: 500">Total sales</span><span
+                        style="font-size: 25px; font-weight: 700">₹18.4L</span><span
+                        style="font-size: 13px; color: #1E7F4F; font-weight: 700">↑ 34%</span>
+                    </div>
+                    <div
+                      style="flex: 1 1 140px; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+                      <span style="font-size: 13px; color: #5E5E5E; font-weight: 500">Orders</span><span
+                        style="font-size: 25px; font-weight: 700">1,004</span><span
+                        style="font-size: 13px; color: #1E7F4F; font-weight: 700">↑ 28%</span>
+                    </div>
+                    <div
+                      style="flex: 1 1 140px; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+                      <span style="font-size: 13px; color: #5E5E5E; font-weight: 500">Conversion rate</span><span
+                        style="font-size: 25px; font-weight: 700">4.2%</span><span
+                        style="font-size: 13px; color: #1E7F4F; font-weight: 700">↑ 1.3 pts</span>
+                    </div>
+                    <div
+                      style="flex: 1 1 140px; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+                      <span style="font-size: 13px; color: #5E5E5E; font-weight: 500">Avg. order value</span><span
+                        style="font-size: 25px; font-weight: 700">₹1,833</span><span
+                        style="font-size: 13px; color: #1E7F4F; font-weight: 700">↑ 9%</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                    <div
+                      style="flex: 2 1 340px; min-width: 0; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+                      <div
+                        style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center">
+                        <span style="font-weight: 600; font-size: 15px">Sales over time</span><span
+                          style="display: flex; gap: 14px; font-size: 12px; color: #5E5E5E"><span
+                            style="display: flex; align-items: center; gap: 6px"><span
+                              style="width: 16px; height: 3px; border-radius: 2px; background: #F4900C; display: block"></span>This
+                            period</span><span style="display: flex; align-items: center; gap: 6px"><span
+                              style="width: 16px; border-top: 2px dashed #A9A49C; display: block"></span>Before</span></span>
+                      </div>
+                      <svg viewBox="0 0 720 220" preserveAspectRatio="none"
+                        style="width: 100%; height: 190px; display: block" role="img"
+                        aria-label="Line chart: sales rising steadily over 30 days, well above the previous period">
+                        <g stroke="#EEECE8" class="gl">
+                          <line x1="0" y1="20" x2="720" y2="20"></line>
+                          <line x1="0" y1="80" x2="720" y2="80"></line>
+                          <line x1="0" y1="140" x2="720" y2="140"></line>
+                          <line x1="0" y1="200" x2="720" y2="200"></line>
+                        </g>
+                        <path
+                          d="M0 180 L48 172 L96 176 L144 160 L192 155 L240 162 L288 140 L336 132 L384 138 L432 118 L480 110 L528 114 L576 94 L624 86 L672 78 L720 60 L720 220 L0 220 Z"
+                          fill="rgba(244,144,12,0.14)"></path>
+                        <path class="ln dash" stroke="#A9A49C"
+                          d="M0 190 L48 188 L96 185 L144 186 L192 180 L240 178 L288 182 L336 175 L384 172 L432 174 L480 168 L528 166 L576 170 L624 162 L672 160 L720 158">
+                        </path>
+                        <path class="ln" stroke="#F4900C"
+                          d="M0 180 L48 172 L96 176 L144 160 L192 155 L240 162 L288 140 L336 132 L384 138 L432 118 L480 110 L528 114 L576 94 L624 86 L672 78 L720 60">
+                        </path>
+                      </svg>
+                      <div style="display: flex; justify-content: space-between; font-size: 12px; color: #6B6B6B">
+                        <span>Sep 7</span><span>Sep 14</span><span>Sep 21</span><span>Sep 28</span><span>Oct 5</span>
+                      </div>
+                    </div>
+                    <div
+                      style="flex: 1 1 220px; min-width: 0; background: #FFFFFF; border: 1px solid #E7E5E1; border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 16px">
+                      <span style="font-weight: 600; font-size: 15px">Conversion funnel</span>
+                      <div style="display: flex; flex-direction: column; gap: 6px">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px"><span>Added to
+                            cart</span><span style="font-weight: 700">11.2%</span></div>
+                        <div style="height: 10px; border-radius: 5px; background: #F1EFEB">
+                          <div style="height: 10px; border-radius: 5px; background: #F4900C; width: 100%"></div>
+                        </div>
+                      </div>
+                      <div style="display: flex; flex-direction: column; gap: 6px">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px"><span>Reached
+                            checkout</span><span style="font-weight: 700">6.3%</span></div>
+                        <div style="height: 10px; border-radius: 5px; background: #F1EFEB">
+                          <div style="height: 10px; border-radius: 5px; background: #F4900C; width: 56%"></div>
+                        </div>
+                      </div>
+                      <div style="display: flex; flex-direction: column; gap: 6px">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px"><span>Completed
+                            checkout</span><span style="font-weight: 700">4.2%</span></div>
+                        <div style="height: 10px; border-radius: 5px; background: #F1EFEB">
+                          <div style="height: 10px; border-radius: 5px; background: #F4900C; width: 38%"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 12px; justify-content: flex-end">
+              <div
+                style="background: #000000; color: #FFFFFF; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 6px">
+                <span
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(30px, 3vw, 40px); font-weight: 600; color: #F4900C; letter-spacing: -0.02em">$390K</span><span
+                  style="font-size: 15px; line-height: 1.5; color: #D6D6D6">Extra revenue driven for clients in a
+                  year</span>
+              </div>
+              <div
+                style="background: #FFFFFF; border: 1px solid #EADBC6; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 6px">
+                <span
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: -0.02em">6.1%</span><span
+                  style="font-size: 15px; line-height: 1.5; color: #3D3D3D">Average store conversion rate after
+                  launch</span>
+              </div>
+              <div
+                style="background: #FFFFFF; border: 1px solid #EADBC6; border-radius: 22px; padding: 24px 26px; display: flex; flex-direction: column; gap: 6px">
+                <span
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: -0.02em">1.4s</span><span
+                  style="font-size: 15px; line-height: 1.5; color: #3D3D3D">Average page load time across our
+                  builds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PORTFOLIO (scroll stack) ============ -->
+      <section id="work" style="background: #FFFFFF; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div
+          style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 28px 48px">
+          <aside class="port-aside"
+            style="flex: 0 1 300px; min-width: 260px; display: flex; flex-direction: column; gap: 16px">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0">
+              Stores we've built and transformed</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D">Keep scrolling. Each store slides in
+              as you go.</p>
+            <nav class="port-list" aria-label="Projects"
+              style="display: flex; flex-direction: column; margin-top: 8px; border-bottom: 1px solid #EFE7DC">
+              <a class="navlink" href="#project-1"
+                style="display: flex; align-items: center; gap: 14px; min-height: 56px; text-decoration: none; color: {{n0.color}}; border-top: 1px solid #EFE7DC"><span
+                  style="display: block; flex: none; height: 3px; border-radius: 2px; width: {{n0.bar}}; background: {{n0.barBg}}; transition: width .3s ease, background .3s ease"></span><span
+                  style="display: flex; flex-direction: column; gap: 2px"><span
+                    style="font-weight: 700; font-size: 16px">Jewelry brand</span><span
+                    style="font-size: 13px; color: #6B6B6B">Homepage and full store</span></span></a>
+              <a class="navlink" href="#project-2"
+                style="display: flex; align-items: center; gap: 14px; min-height: 56px; text-decoration: none; color: {{n1.color}}; border-top: 1px solid #EFE7DC"><span
+                  style="display: block; flex: none; height: 3px; border-radius: 2px; width: {{n1.bar}}; background: {{n1.barBg}}; transition: width .3s ease, background .3s ease"></span><span
+                  style="display: flex; flex-direction: column; gap: 2px"><span
+                    style="font-weight: 700; font-size: 16px">Aquatics retailer</span><span
+                    style="font-size: 13px; color: #6B6B6B">Product pages</span></span></a>
+              <a class="navlink" href="#project-3"
+                style="display: flex; align-items: center; gap: 14px; min-height: 56px; text-decoration: none; color: {{n2.color}}; border-top: 1px solid #EFE7DC"><span
+                  style="display: block; flex: none; height: 3px; border-radius: 2px; width: {{n2.bar}}; background: {{n2.barBg}}; transition: width .3s ease, background .3s ease"></span><span
+                  style="display: flex; flex-direction: column; gap: 2px"><span
+                    style="font-weight: 700; font-size: 16px">Herbal wellness brand</span><span
+                    style="font-size: 13px; color: #6B6B6B">Custom product cards</span></span></a>
+              <a class="navlink" href="#project-4"
+                style="display: flex; align-items: center; gap: 14px; min-height: 56px; text-decoration: none; color: {{n3.color}}; border-top: 1px solid #EFE7DC"><span
+                  style="display: block; flex: none; height: 3px; border-radius: 2px; width: {{n3.bar}}; background: {{n3.barBg}}; transition: width .3s ease, background .3s ease"></span><span
+                  style="display: flex; flex-direction: column; gap: 2px"><span
+                    style="font-weight: 700; font-size: 16px">Apparel label</span><span
+                    style="font-size: 13px; color: #6B6B6B">Variant picker and quick view</span></span></a>
+            </nav>
+            <a class="d-only" href="#contact" style="font-weight: 700; font-size: 16px">Want your store here? Get a free
+              audit</a>
+          </aside>
+
+          <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+
+            <!-- project 1 -->
+            <article id="project-1" ref="{{ref0}}" class="pcard pc1"
+              style="transform: {{fx0.t}}; filter: {{fx0.f}}; background: #2A1B14; color: #F6EBDD; border-radius: 28px; overflow: hidden; padding: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px) 0; display: flex; flex-wrap: wrap; gap: 0 36px; box-sizing: border-box">
+              <div
+                style="flex: 1 1 280px; min-width: 0; padding-bottom: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; gap: 14px">
+                <span
+                  style="align-self: flex-start; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(246,235,221,0.35)">Jewelry
+                  &amp; accessories</span>
+                <h3
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.2; margin: 0; font-weight: 600">
+                  A storefront as premium as the pieces</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #D9CBB8">A full custom store for a
+                  jewelry brand, designed to guide shoppers from the first screen to checkout without friction.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: #E8DCCB"><span
+                    style="background: rgba(246,235,221,0.1); padding: 4px 10px; border-radius: 6px">Custom
+                    design</span><span
+                    style="background: rgba(246,235,221,0.1); padding: 4px 10px; border-radius: 6px">Mobile-first</span><span
+                    style="background: rgba(246,235,221,0.1); padding: 4px 10px; border-radius: 6px">Slide-out
+                    cart</span></div>
+                <div
+                  style="margin-top: auto; border-top: 1px solid rgba(246,235,221,0.18); padding-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+                  <span
+                    style="font-family: Unbounded, sans-serif; font-size: 24px; font-weight: 600; color: #F4900C">[+X%]</span><span
+                    style="font-size: 14px; color: #D9CBB8">[Result, e.g. conversion rate after launch]</span>
+                </div>
+                <span style="font-size: 13px; color: #B9A994">Client: [Client name]</span>
+              </div>
+              <div
+                style="flex: 0 0 auto; margin: 0 auto; align-self: flex-end; height: clamp(330px, 33vw, 460px); overflow: hidden">
+                <div
+                  style="width: 272px; height: 560px; border-radius: 44px 44px 0 0; background: #000000; padding: 9px 9px 0; box-sizing: border-box">
+                  <div
+                    style="position: relative; width: 100%; height: 100%; border-radius: 36px 36px 0 0; overflow: hidden; background: #FBF6F2; display: flex; flex-direction: column">
+                    <div aria-hidden="true"
+                      style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 12px; background: #000000">
+                    </div>
+                    <div
+                      style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #3A2418">
+                      <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h10"></path>
+                      </svg><span
+                        style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; font-weight: 600; letter-spacing: 0.35em">LUNE</span><svg
+                        viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M6 8h12l-1 12H7z"></path>
+                        <path d="M9 8a3 3 0 0 1 6 0"></path>
+                      </svg>
+                    </div>
+                    <div
+                      style="position: relative; margin: 0 12px; height: 296px; border-radius: 18px; background: #E9D3C6; overflow: hidden">
+                      <svg viewBox="0 0 200 170"
+                        style="position: absolute; top: 6px; left: 0; width: 100%; height: auto" aria-hidden="true">
+                        <circle cx="100" cy="70" r="66" fill="#F1E1D6"></circle>
+                        <path class="thin" stroke="#C9A15B" d="M34 6 Q100 120 166 6"></path>
+                        <path class="thin" stroke="#C9A15B" d="M100 63 L100 74"></path>
+                        <path fill="#C9A15B" d="M100 74 c-10 0 -16 10 -10 20 l10 14 l10 -14 c6 -10 0 -20 -10 -20z">
+                        </path>
+                        <circle cx="100" cy="88" r="4.5" fill="#FFF7EE"></circle>
+                      </svg>
+                      <div
+                        style="position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px">
+                        <span
+                          style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 31px; line-height: 0.98; font-weight: 600; color: #3A2418">Forever
+                          love letters</span><span
+                          style="align-self: flex-start; background: #FFFFFF; color: #3A2418; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 999px">Shop
+                          the collection</span>
+                      </div>
+                    </div>
+                    <div
+                      style="padding: 14px 14px 6px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #3A2418">
+                      <span>Bestsellers</span><span style="font-weight: 500; text-decoration: underline">View all</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- project 2 -->
+            <article id="project-2" ref="{{ref1}}" class="pcard pc2"
+              style="transform: {{fx1.t}}; filter: {{fx1.f}}; background: #FFE3BF; color: #000000; border-radius: 28px; overflow: hidden; padding: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px) 0; display: flex; flex-wrap: wrap; gap: 0 36px; box-sizing: border-box">
+              <div
+                style="flex: 1 1 280px; min-width: 0; padding-bottom: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; gap: 14px">
+                <span
+                  style="align-self: flex-start; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.3)">Aquatics
+                  &amp; pet supplies</span>
+                <h3
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.2; margin: 0; font-weight: 600">
+                  Product pages that sell big-ticket gear</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D2A10">Conversion-optimized product
+                  pages with fast-loading galleries, trust badges and a sticky add-to-cart that follows the thumb.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px"><span
+                    style="background: rgba(255,255,255,0.65); padding: 4px 10px; border-radius: 6px">Product
+                    pages</span><span
+                    style="background: rgba(255,255,255,0.65); padding: 4px 10px; border-radius: 6px">Sticky
+                    add-to-cart</span><span
+                    style="background: rgba(255,255,255,0.65); padding: 4px 10px; border-radius: 6px">Trust
+                    badges</span></div>
+                <div
+                  style="margin-top: auto; border-top: 1px solid rgba(0,0,0,0.15); padding-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+                  <span
+                    style="font-family: Unbounded, sans-serif; font-size: 24px; font-weight: 600; color: #000000">[+X%]</span><span
+                    style="font-size: 14px; color: #3D2A10">[Result, e.g. add-to-cart rate on mobile]</span>
+                </div>
+                <span style="font-size: 13px; color: #5C4320">Client: [Client name]</span>
+              </div>
+              <div
+                style="flex: 0 0 auto; margin: 0 auto; align-self: flex-end; height: clamp(330px, 33vw, 460px); overflow: hidden">
+                <div
+                  style="width: 272px; height: 560px; border-radius: 44px 44px 0 0; background: #000000; padding: 9px 9px 0; box-sizing: border-box">
+                  <div
+                    style="position: relative; width: 100%; height: 100%; border-radius: 36px 36px 0 0; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column">
+                    <div aria-hidden="true"
+                      style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 12px; background: #000000">
+                    </div>
+                    <div
+                      style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #0E2A47">
+                      <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h10"></path>
+                      </svg><span style="font-size: 13px; font-weight: 800; letter-spacing: 0.22em">REEFLINE</span><svg
+                        viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M6 8h12l-1 12H7z"></path>
+                        <path d="M9 8a3 3 0 0 1 6 0"></path>
+                      </svg>
+                    </div>
+                    <div
+                      style="margin: 0 12px; height: 200px; border-radius: 14px; background: #EAF1F7; display: flex; align-items: center; justify-content: center">
+                      <svg viewBox="0 0 200 160" style="width: 190px; height: auto" aria-hidden="true">
+                        <rect x="34" y="12" width="132" height="6" rx="3" fill="#1E2A38"></rect>
+                        <rect x="30" y="20" width="140" height="92" rx="6" fill="#2D7DD2"></rect>
+                        <rect x="30" y="20" width="140" height="10" fill="#8EC3F0"></rect>
+                        <rect x="30" y="96" width="140" height="16" fill="#E9D8B4"></rect>
+                        <circle cx="58" cy="92" r="10" fill="#F27A9B"></circle>
+                        <circle cx="72" cy="90" r="7" fill="#F7A440"></circle>
+                        <path class="thin" stroke="#F4900C" style="stroke-width: 4"
+                          d="M128 98 L128 70 M128 82 L118 66 M128 78 L140 62"></path>
+                        <ellipse cx="100" cy="50" rx="9" ry="5" fill="#FFD23F"></ellipse>
+                        <path d="M91 50 l-7 -5 v10z" fill="#FFD23F"></path>
+                        <ellipse cx="146" cy="64" rx="6" ry="3.5" fill="#FFFFFF"></ellipse>
+                        <rect x="40" y="112" width="120" height="42" rx="4" fill="#1E2A38"></rect>
+                      </svg>
+                    </div>
+                    <div style="display: flex; gap: 6px; padding: 10px 12px 0"><span
+                        style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; border: 2px solid #0E2A47; box-sizing: border-box; display: block"></span><span
+                        style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span><span
+                        style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span><span
+                        style="width: 44px; height: 44px; border-radius: 8px; background: #EAF1F7; display: block"></span>
+                    </div>
+                    <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 5px; color: #0E2A47">
+                      <span style="font-size: 10px; font-weight: 700; color: #1E7F4F">In stock, ships Friday</span><span
+                        style="font-size: 15px; font-weight: 700; line-height: 1.2">Nano Reef Aquarium 75L</span><span
+                        style="font-size: 10px; color: #4A5A6A">★★★★★ 128 reviews</span><span
+                        style="font-size: 17px; font-weight: 800">£849.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- project 3 -->
+            <article id="project-3" ref="{{ref2}}" class="pcard pc3"
+              style="transform: {{fx2.t}}; filter: {{fx2.f}}; background: #E4EDE3; color: #000000; border-radius: 28px; overflow: hidden; padding: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px) 0; display: flex; flex-wrap: wrap; gap: 0 36px; box-sizing: border-box">
+              <div
+                style="flex: 1 1 280px; min-width: 0; padding-bottom: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; gap: 14px">
+                <span
+                  style="align-self: flex-start; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.3)">Health
+                  &amp; wellness</span>
+                <h3
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.2; margin: 0; font-weight: 600">
+                  Product cards that grow order value</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #24372A">Custom-coded product cards with
+                  pack offers, badges and quick add, built to nudge shoppers toward bigger baskets.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px"><span
+                    style="background: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 6px">Custom product
+                    cards</span><span
+                    style="background: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 6px">Pack
+                    offers</span><span
+                    style="background: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 6px">Badges</span></div>
+                <div
+                  style="margin-top: auto; border-top: 1px solid rgba(0,0,0,0.15); padding-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+                  <span
+                    style="font-family: Unbounded, sans-serif; font-size: 24px; font-weight: 600; color: #1F6B45">[+X%]</span><span
+                    style="font-size: 14px; color: #24372A">[Result, e.g. average order value]</span>
+                </div>
+                <span style="font-size: 13px; color: #3D5446">Client: [Client name]</span>
+              </div>
+              <div
+                style="flex: 0 0 auto; margin: 0 auto; align-self: flex-end; height: clamp(330px, 33vw, 460px); overflow: hidden">
+                <div
+                  style="width: 272px; height: 560px; border-radius: 44px 44px 0 0; background: #000000; padding: 9px 9px 0; box-sizing: border-box">
+                  <div
+                    style="position: relative; width: 100%; height: 100%; border-radius: 36px 36px 0 0; overflow: hidden; background: #F4F1EA; display: flex; flex-direction: column">
+                    <div aria-hidden="true"
+                      style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 12px; background: #000000">
+                    </div>
+                    <div
+                      style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #1F3B2A">
+                      <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h10"></path>
+                      </svg><span
+                        style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; letter-spacing: 0.08em">Leaf
+                        &amp; Root</span><svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px"
+                        aria-hidden="true">
+                        <path d="M6 8h12l-1 12H7z"></path>
+                        <path d="M9 8a3 3 0 0 1 6 0"></path>
+                      </svg>
+                    </div>
+                    <div style="margin: 0 12px; background: #FFFFFF; border-radius: 16px; overflow: hidden">
+                      <div
+                        style="position: relative; height: 196px; background: #EEF2EA; display: flex; align-items: center; justify-content: center">
+                        <span
+                          style="position: absolute; top: 10px; left: 10px; background: #1F6B45; color: #FFFFFF; font-size: 8px; font-weight: 800; letter-spacing: 0.08em; padding: 4px 7px; border-radius: 4px">BESTSELLER</span>
+                        <div
+                          style="width: 94px; height: 134px; border-radius: 6px; background: #2F6B3F; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 14px 24px -12px rgba(0,0,0,0.5)">
+                          <span style="font-size: 7px; font-weight: 700; color: #F6E7A1; letter-spacing: 0.12em">LEAF
+                            &amp; ROOT</span><span
+                            style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 700; color: #F6E7A1; line-height: 1">12</span><span
+                            style="font-size: 7px; font-weight: 800; color: #FFFFFF; letter-spacing: 0.1em">SUGAR
+                            BALANCE</span>
+                        </div>
+                      </div>
+                      <div
+                        style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; color: #1F3B2A">
+                        <div style="display: flex; gap: 4px"><span
+                            style="background: #F6E7A1; font-size: 8px; font-weight: 700; padding: 3px 7px; border-radius: 999px">Herbal</span><span
+                            style="background: #F6E7A1; font-size: 8px; font-weight: 700; padding: 3px 7px; border-radius: 999px">Organic</span>
+                        </div><span style="font-size: 14px; font-weight: 700">Sugar Balance Herbal Tea</span><span
+                          style="font-size: 10px; color: #5B6B60">Clove, ginger and cumin blend</span>
+                        <div style="display: flex; gap: 5px; font-size: 9px; font-weight: 700"><span
+                            style="border: 1px solid #CFD8D1; padding: 5px 8px; border-radius: 6px">1 pack</span><span
+                            style="border: 1px solid #CFD8D1; padding: 5px 8px; border-radius: 6px">2 pack</span><span
+                            style="background: #1F6B45; color: #FFFFFF; padding: 5px 8px; border-radius: 6px">3
+                            pack</span></div>
+                        <div
+                          style="position: relative; margin-top: 4px; background: #1F6B45; color: #FFFFFF; display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 8px; font-size: 11px; font-weight: 800">
+                          <span>ADD TO CART</span><span>₹949</span><span
+                            style="position: absolute; right: 6px; top: -9px; background: #C2362B; font-size: 8px; padding: 2px 6px; border-radius: 4px">15%
+                            OFF</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- project 4 -->
+            <article id="project-4" ref="{{ref3}}" class="pcard pc4"
+              style="transform: {{fx3.t}}; filter: {{fx3.f}}; background: #F4900C; color: #000000; border-radius: 28px; overflow: hidden; padding: clamp(22px, 3vw, 40px) clamp(22px, 3vw, 40px) 0; display: flex; flex-wrap: wrap; gap: 0 36px; box-sizing: border-box">
+              <div
+                style="flex: 1 1 280px; min-width: 0; padding-bottom: clamp(22px, 3vw, 40px); display: flex; flex-direction: column; gap: 14px">
+                <span
+                  style="align-self: flex-start; font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.4)">Fashion
+                  &amp; apparel</span>
+                <h3
+                  style="font-family: Unbounded, sans-serif; font-size: clamp(21px, 2vw, 26px); line-height: 1.2; margin: 0; font-weight: 600">
+                  One-thumb shopping for an apparel label</h3>
+                <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #000000">Color and size pickers, quick
+                  view and clear fabric details, so shoppers choose the right fit without leaving the card.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px"><span
+                    style="background: rgba(255,255,255,0.45); padding: 4px 10px; border-radius: 6px">Variant
+                    picker</span><span
+                    style="background: rgba(255,255,255,0.45); padding: 4px 10px; border-radius: 6px">Quick
+                    view</span><span
+                    style="background: rgba(255,255,255,0.45); padding: 4px 10px; border-radius: 6px">Badges and
+                    labels</span></div>
+                <div
+                  style="margin-top: auto; border-top: 1px solid rgba(0,0,0,0.2); padding-top: 14px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap">
+                  <span style="font-family: Unbounded, sans-serif; font-size: 24px; font-weight: 600">[+X%]</span><span
+                    style="font-size: 14px">[Result, e.g. fewer size returns]</span>
+                </div>
+                <span style="font-size: 13px">Client: [Client name]</span>
+              </div>
+              <div
+                style="flex: 0 0 auto; margin: 0 auto; align-self: flex-end; height: clamp(330px, 33vw, 460px); overflow: hidden">
+                <div
+                  style="width: 272px; height: 560px; border-radius: 44px 44px 0 0; background: #000000; padding: 9px 9px 0; box-sizing: border-box">
+                  <div
+                    style="position: relative; width: 100%; height: 100%; border-radius: 36px 36px 0 0; overflow: hidden; background: #FFFFFF; display: flex; flex-direction: column">
+                    <div aria-hidden="true"
+                      style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 12px; background: #000000">
+                    </div>
+                    <div
+                      style="padding: 46px 16px 10px; display: flex; justify-content: space-between; align-items: center; color: #1A1A1A">
+                      <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h10"></path>
+                      </svg><span style="font-size: 14px; font-weight: 800; letter-spacing: 0.24em">FIBRE</span><svg
+                        viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                        <path d="M6 8h12l-1 12H7z"></path>
+                        <path d="M9 8a3 3 0 0 1 6 0"></path>
+                      </svg>
+                    </div>
+                    <div
+                      style="position: relative; margin: 0 12px; height: 230px; border-radius: 14px; background: #E9E7E2; display: flex; align-items: center; justify-content: center">
+                      <span
+                        style="position: absolute; top: 10px; left: 10px; background: #000000; color: #FFFFFF; font-size: 8px; font-weight: 800; padding: 4px 7px; border-radius: 4px">NEW</span><svg
+                        viewBox="0 0 100 110" style="width: 150px; height: auto" aria-hidden="true">
+                        <path
+                          d="M35 8 L20 14 L6 52 L16 56 L26 32 L26 104 L74 104 L74 32 L84 56 L94 52 L80 14 L65 8 C62 16 38 16 35 8 Z"
+                          fill="#2F4F3A"></path>
+                        <path class="thin" stroke="rgba(255,255,255,0.3)" style="stroke-width: 1.5" d="M50 18 L50 104">
+                        </path>
+                        <circle cx="53" cy="30" r="1.6" fill="rgba(255,255,255,0.5)"></circle>
+                        <circle cx="53" cy="46" r="1.6" fill="rgba(255,255,255,0.5)"></circle>
+                        <circle cx="53" cy="62" r="1.6" fill="rgba(255,255,255,0.5)"></circle>
+                      </svg>
+                    </div>
+                    <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 7px; color: #1A1A1A">
+                      <div style="display: flex; gap: 4px"><span
+                          style="background: #F1EFEA; font-size: 8px; font-weight: 800; padding: 3px 7px; border-radius: 4px">BAMBOO
+                          FABRIC</span><span
+                          style="background: #F1EFEA; font-size: 8px; font-weight: 800; padding: 3px 7px; border-radius: 4px">BREATHABLE</span>
+                      </div><span style="font-size: 14px; font-weight: 700">Bamboo Knit Shirt</span><span
+                        style="font-size: 10px; color: #5C5C5C">Colour: Forest green</span>
+                      <div style="display: flex; gap: 6px"><span
+                          style="width: 16px; height: 16px; border-radius: 50%; background: #111111; display: block"></span><span
+                          style="width: 16px; height: 16px; border-radius: 50%; background: #A79BC9; display: block"></span><span
+                          style="width: 16px; height: 16px; border-radius: 50%; background: #2F4F3A; display: block; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 3.5px #000000"></span><span
+                          style="width: 16px; height: 16px; border-radius: 50%; background: #1F2A44; display: block"></span><span
+                          style="width: 16px; height: 16px; border-radius: 50%; background: #6B2737; display: block"></span>
+                      </div>
+                      <div style="display: flex; gap: 4px; font-size: 9px; font-weight: 700"><span
+                          style="border: 1px solid #D6D3CE; padding: 4px 7px; border-radius: 4px">S</span><span
+                          style="background: #000000; color: #FFFFFF; padding: 4px 7px; border-radius: 4px">M</span><span
+                          style="border: 1px solid #D6D3CE; padding: 4px 7px; border-radius: 4px">L</span><span
+                          style="border: 1px solid #D6D3CE; padding: 4px 7px; border-radius: 4px">XL</span><span
+                          style="border: 1px solid #D6D3CE; padding: 4px 7px; border-radius: 4px">XXL</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TESTIMONIALS ============ -->
+      <section id="reviews" style="background: #000000; color: #FFFFFF; padding: clamp(64px, 8vw, 112px) 0">
+        <div
+          style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); display: flex; flex-wrap: wrap; gap: 16px 40px; align-items: flex-end; justify-content: space-between">
+          <div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0">
+              Founders who trusted us with their store</h2>
+            <a href="https://www.shopify.com/partners/directory/partner/developer442"
+              style="display: inline-flex; align-items: center; gap: 8px; color: #FFFFFF; font-weight: 600; font-size: 16px"><span
+                style="display: flex; gap: 2px; color: #F4900C" aria-hidden="true"><svg viewBox="0 0 24 24"
+                  style="width: 16px; height: 16px">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg><svg viewBox="0 0 24 24" style="width: 16px; height: 16px">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg><svg viewBox="0 0 24 24" style="width: 16px; height: 16px">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg><svg viewBox="0 0 24 24" style="width: 16px; height: 16px">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg><svg viewBox="0 0 24 24" style="width: 16px; height: 16px">
+                  <path fill="currentColor"
+                    d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9z"></path>
+                </svg></span>Rated 5.0 on the Shopify Partner Directory</a>
+          </div>
+          <div class="d-only" style="display: flex; gap: 10px">
+            <button type="button" onClick="{{tPrev}}" aria-label="Previous reviews"
+              style="width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid #4A4A4A; background: transparent; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg
+                viewBox="0 0 24 24" class="ic" style="width: 22px; height: 22px" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7"></path>
+              </svg></button>
+            <button type="button" onClick="{{tNext}}" aria-label="Next reviews"
+              style="width: 52px; height: 52px; border-radius: 50%; border: 0; background: #F4900C; color: #000000; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg
+                viewBox="0 0 24 24" class="ic" style="width: 22px; height: 22px" aria-hidden="true">
+                <path d="M9 5l7 7-7 7"></path>
+              </svg></button>
+          </div>
+        </div>
+        <div ref="{{tRef}}" class="noscroll"
+          style="margin-top: 36px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 max(clamp(20px, 4vw, 40px), calc((100% - 1240px) / 2 + 40px)) 8px; scroll-padding: 0 max(clamp(20px, 4vw, 40px), calc((100% - 1240px) / 2 + 40px))">
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #F4900C; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“BriskCoders rebuilt our
+              Shopify store from scratch and our conversion rate nearly doubled. The team is fast, reliable and
+              genuinely cares.”</blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #000000; color: #F4900C; display: flex; align-items: center; justify-content: center; font-weight: 700">AM</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">Ava
+                  Mitchell</span><span style="font-size: 13px">Founder, Lumen</span></span></figcaption>
+          </figure>
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #FFFFFF; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px; color: #A85A00" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“The custom product pages
+              they built increased our average order value by 22%. Clean code, clear communication and delivered on
+              time.”</blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #FFE3BF; display: flex; align-items: center; justify-content: center; font-weight: 700">SA</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">Sofia
+                  Alvarez</span><span style="font-size: 13px; color: #5C5C5C">Owner, Vera</span></span></figcaption>
+          </figure>
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #FFE3BF; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px; color: #A85A00" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“We migrated from
+              WooCommerce with zero downtime and no lost SEO. BriskCoders handled every detail. Highly recommend for any
+              serious store.”</blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">PN</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">Priya
+                  Nair</span><span style="font-size: 13px; color: #4A3A26">COO, Biotastic</span></span></figcaption>
+          </figure>
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #F4900C; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“Support after launch is
+              what sets them apart. Quick replies, real fixes, no ticket black holes. They treat our store like their
+              own.”</blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #000000; color: #F4900C; display: flex; align-items: center; justify-content: center; font-weight: 700">ML</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">Marcus
+                  Lee</span><span style="font-size: 13px">Founder, Mono</span></span></figcaption>
+          </figure>
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #FFFFFF; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px; color: #A85A00" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“Their custom theme work
+              is on another level. Everything loads instantly and looks exactly like our brand. Best Shopify partner
+              we've worked with.”</blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #FFE3BF; display: flex; align-items: center; justify-content: center; font-weight: 700">DR</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">Daniel
+                  Rossi</span><span style="font-size: 13px; color: #5C5C5C">CEO, Rive</span></span></figcaption>
+          </figure>
+          <figure
+            style="flex: 0 0 300px; scroll-snap-align: start; margin: 0; background: #FFE3BF; color: #000000; border-radius: 24px; padding: 26px; min-height: 340px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+            <span style="font-size: 15px; letter-spacing: 2px; color: #A85A00" aria-label="5 stars">★★★★★</span>
+            <blockquote style="margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600">“From strategy to launch,
+              the whole process was smooth. They understood our goals and built exactly what our customers needed.”
+            </blockquote>
+            <figcaption style="margin-top: auto; display: flex; align-items: center; gap: 12px"><span
+                style="width: 40px; height: 40px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700">JO</span><span
+                style="display: flex; flex-direction: column"><span style="font-weight: 700; font-size: 15px">James
+                  Okoro</span><span style="font-size: 13px; color: #4A3A26">Director, Nordic</span></span></figcaption>
+          </figure>
+        </div>
+        <p class="m-only"
+          style="margin: 14px clamp(20px, 4vw, 40px) 0; font-size: 14px; color: #BDBDBD; align-items: center; gap: 8px">
+          Swipe for more reviews</p>
+      </section>
+
+      <!-- ============ PROCESS ============ -->
+      <section id="process" style="background: #FFFFFF; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px">
+          <div
+            style="display: flex; flex-wrap: wrap; gap: 16px 64px; align-items: flex-end; justify-content: space-between">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0; max-width: 16ch">
+              From first call to launch in 4–6 weeks</h2>
+            <p
+              style="margin: 0; max-width: 40ch; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: #3D3D3D">
+              A clear, transparent process that takes your store from idea to revenue.</p>
+          </div>
+          <ol class="steps"
+            style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px">
+            <li style="display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; align-items: center; gap: 12px"><span
+                  style="width: 56px; height: 56px; border-radius: 50%; background: #F4900C; display: flex; align-items: center; justify-content: center; font-family: Unbounded, sans-serif; font-weight: 600; font-size: 20px; flex: none">1</span><span
+                  class="step-line" style="flex: 1; height: 2px; background: #EADBC6; display: block"></span></div>
+              <h3 style="font-size: 20px; margin: 0; font-weight: 700">Discovery and strategy</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">We map your goals, audience and
+                catalog into a store plan built to convert.</p>
+            </li>
+            <li style="display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; align-items: center; gap: 12px"><span
+                  style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #000000; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: Unbounded, sans-serif; font-weight: 600; font-size: 20px; flex: none">2</span><span
+                  class="step-line" style="flex: 1; height: 2px; background: #EADBC6; display: block"></span></div>
+              <h3 style="font-size: 20px; margin: 0; font-weight: 700">Design and build</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">You approve the designs first,
+                then we hand-code your Shopify theme.</p>
+            </li>
+            <li style="display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; align-items: center; gap: 12px"><span
+                  style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #000000; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: Unbounded, sans-serif; font-weight: 600; font-size: 20px; flex: none">3</span><span
+                  class="step-line" style="flex: 1; height: 2px; background: #EADBC6; display: block"></span></div>
+              <h3 style="font-size: 20px; margin: 0; font-weight: 700">Review and refine</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">We test on every device, polish
+                the details and QA every interaction.</p>
+            </li>
+            <li style="display: flex; flex-direction: column; gap: 14px">
+              <div style="display: flex; align-items: center; gap: 12px"><span
+                  style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #000000; box-sizing: border-box; display: flex; align-items: center; justify-content: center; font-family: Unbounded, sans-serif; font-weight: 600; font-size: 20px; flex: none">4</span>
+              </div>
+              <h3 style="font-size: 20px; margin: 0; font-weight: 700">Launch and support</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3D3D3D">We go live, monitor the store and
+                give you 30 days of free support.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ COMPARISON ============ -->
+      <section id="compare" style="background: #FFF4E5; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div style="max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0">
+              BriskCoders vs. your other options</h2>
+            <p
+              style="margin: 0; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: #3D3D3D; max-width: 52ch">
+              Why brands choose a dedicated Shopify team over freelancers and generalist agencies.</p>
+          </div>
+          <div style="overflow-x: auto; background: #FFFFFF; border: 1px solid #EADBC6; border-radius: 24px">
+            <table style="width: 100%; min-width: 600px; border-collapse: collapse; font-size: 15px">
+              <thead>
+                <tr>
+                  <th scope="col"
+                    style="text-align: left; padding: 18px 22px; font-size: 13px; font-weight: 600; color: #5C5C5C">
+                    Compare</th>
+                  <th scope="col"
+                    style="padding: 18px 16px; background: #000000; color: #FFFFFF; font-size: 15px; font-weight: 700">
+                    BriskCoders</th>
+                  <th scope="col" style="padding: 18px 16px; font-size: 15px; font-weight: 700">Freelancers</th>
+                  <th scope="col" style="padding: 18px 16px; font-size: 15px; font-weight: 700">Agencies</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">Pricing</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">Flat rate,
+                    transparent</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Hourly, unpredictable</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">3–5x higher, retainers</td>
+                </tr>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">Start of work</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">Within 48 hours
+                  </td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">1–2 week wait</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">2–4 week queue</td>
+                </tr>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">Launch time</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">4–6 weeks</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Unreliable</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">8–16 weeks</td>
+                </tr>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">Code quality</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">100% hand-coded
+                  </td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Mixed quality</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Template-based</td>
+                </tr>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">After launch</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">30 days free
+                    support</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Extra cost</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Paid retainer</td>
+                </tr>
+                <tr style="border-top: 1px solid #F0E6D8">
+                  <th scope="row" style="text-align: left; padding: 16px 22px; font-weight: 600">Code ownership</th>
+                  <td style="padding: 16px; background: #FFF4E5; font-weight: 700; text-align: center">100% yours</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Varies</td>
+                  <td style="padding: 16px; color: #5C5C5C; text-align: center">Lock-in risk</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section id="faq" style="background: #FFFFFF; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px)">
+        <div
+          style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px 64px; align-items: flex-start">
+          <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 46px); line-height: 1.12; letter-spacing: -0.02em; margin: 0; max-width: 14ch">
+              Questions before you start</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D; max-width: 34ch">Still have one? Ask
+              us on WhatsApp. We reply within 2 hours.</p>
+            <a href="https://wa.me/" style="font-weight: 700; font-size: 16px">Ask on WhatsApp</a>
+          </div>
+          <div style="flex: 1.6 1 480px; min-width: 0; border-top: 1px solid #E6DCCD">
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                How long does it take to build a Shopify store?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Most
+                custom builds take 4–6 weeks from kickoff to launch, depending on pages, features and integrations. You
+                get a clear timeline before we start.</p>
+            </details>
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                What's included in the price?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Design,
+                development, testing, launch and 30 days of support, all for one flat rate.</p>
+            </details>
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                Do I own the code and design after delivery?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Yes. The
+                source code and design are 100% yours once the project is delivered.</p>
+            </details>
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                Can you migrate my store from WooCommerce or Magento?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Yes. We
+                move stores from WooCommerce, Magento and BigCommerce to Shopify with zero downtime and no lost SEO.</p>
+            </details>
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                Will my store be fast and mobile-friendly?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Yes. Every
+                build is mobile-first and hand-coded, and our stores load in 1.4 seconds on average.</p>
+            </details>
+            <details style="border-bottom: 1px solid #E6DCCD">
+              <summary
+                style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; font-size: 18px; font-weight: 600">
+                Do you build custom Shopify apps and integrations?<svg viewBox="0 0 24 24" class="ic faq-ic"
+                  style="width: 22px; height: 22px; flex: none; color: #A85A00" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg></summary>
+              <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #3D3D3D; max-width: 62ch">Yes. We
+                build custom apps, app integrations and payment gateway setups when an off-the-shelf option doesn't fit.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FINAL CTA ============ -->
+      <section id="contact"
+        style="background: #F4900C; color: #000000; padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 40px); position: relative; overflow: hidden">
+
+        <!-- Decorative circle -->
+        <div aria-hidden="true"
+          style="position: absolute; right: -160px; top: -180px; width: 520px; height: 520px; border-radius: 50%; border: 56px solid #F9A93F; box-sizing: border-box">
+        </div>
+
+        <div
+          style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px 56px; align-items: center">
+
+          <!-- LEFT CONTENT -->
+          <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+            <h2
+              style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(30px, 3.8vw, 54px); line-height: 1.08; letter-spacing: -0.03em; margin: 0; max-width: 13ch">
+              Ready to build a store that sells?
+            </h2>
+
+            <p style="margin: 0; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; max-width: 44ch">
+              Chat with our team on WhatsApp for a project plan, pricing and timeline, or book a free 30-minute call
+              with Raghu.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; font-weight: 600">
+
+              <span style="display: inline-flex; align-items: center; gap: 6px">
+                <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+                Replies within 2 hours
+              </span>
+
+              <span style="display: inline-flex; align-items: center; gap: 6px">
+                <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                  <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                  <path d="M8 11V8a4 4 0 0 1 8 0v3"></path>
+                </svg>
+                NDA-friendly
+              </span>
+
+              <span style="display: inline-flex; align-items: center; gap: 6px">
+                <svg viewBox="0 0 24 24" class="ic" style="width: 18px; height: 18px" aria-hidden="true">
+                  <path d="M5 12l5 5 9-10"></path>
+                </svg>
+                Free quote
+              </span>
+
+            </div>
+          </div>
+
+
+          <!-- RIGHT FORM CARD -->
+          <div
+            style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; border-radius: 28px; padding: clamp(22px, 3vw, 36px); box-sizing: border-box; box-shadow: 0 30px 70px -30px rgba(80,35,0,0.5)">
+
+            <!-- JOTFORM FORM -->
+            <form action="https://submit.jotform.com/submit/262803056947059/" method="POST"
+              target="jotform-submit-frame" id="free-audit-form" style="margin: 0">
+
+              <!-- FORM CONTENT -->
+              <div id="audit-form-content" style="display: flex; flex-direction: column; gap: 14px">
+
+                <!-- WhatsApp -->
+                <a class="lift" href="https://wa.me/"
+                  style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; border-radius: 999px; background: #000000; color: #FFFFFF; font-weight: 700; font-size: 17px; text-decoration: none">
+
+                  <svg viewBox="0 0 24 24" class="ic" style="width: 20px; height: 20px" aria-hidden="true">
+
+                    <path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"></path>
+                    <path d="M9 9.5c.3 2.4 2.1 4.2 4.5 4.5"></path>
+
+                  </svg>
+
+                  Chat on WhatsApp
+                </a>
+
+
+                <!-- Calendly -->
+                <a class="lift" href="https://calendly.com/"
+                  style="display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 58px; border-radius: 999px; border: 2px solid #000000; color: #000000; font-weight: 700; font-size: 17px; text-decoration: none; box-sizing: border-box">
+
+                  <svg viewBox="0 0 24 24" class="ic" style="width: 20px; height: 20px" aria-hidden="true">
+
+                    <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                    <path d="M3 10h18M8 3v4M16 3v4"></path>
+
+                  </svg>
+
+                  Book a 30-min call
+                </a>
+
+
+                <!-- Divider -->
+                <div
+                  style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #5C5C5C; margin: 6px 0 2px">
+
+                  <span style="flex: 1; height: 1px; background: #EADBC6; display: block">
+                  </span>
+
+                  or get your free audit by email
+
+                  <span style="flex: 1; height: 1px; background: #EADBC6; display: block">
+                  </span>
+
+                </div>
+
+
+                <!-- Name + Email -->
+                <div style="display: flex; flex-wrap: wrap; gap: 12px">
+
+                  <!-- Name -->
+                  <div style="flex: 1 1 180px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+
+                    <label for="f-name" style="font-size: 14px; font-weight: 600">
+                      Your name
+                    </label>
+                    
+
+                    <input id="f-name" name="q2_q2_fullname0[first]" type="text" autocomplete="name"
+                      placeholder="Jane Smith" required
+                      style="height: 50px; border: 1.5px solid #D9D2C7; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF; color: #000000; box-sizing: border-box; width: 100%">
+
+                  </div>
+
+
+                  <!-- Email -->
+                  <div style="flex: 1 1 180px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+
+                    <label for="f-email" style="font-size: 14px; font-weight: 600">
+                      Email
+                    </label>
+
+                    <input id="f-email" name="q3_q3_email1" type="email" autocomplete="email"
+                      placeholder="jane@yourstore.com" required
+                      style="height: 50px; border: 1.5px solid #D9D2C7; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF; color: #000000; box-sizing: border-box; width: 100%">
+
+                  </div>
+
+                </div>
+
+
+                <!-- Store URL -->
+                <div style="display: flex; flex-direction: column; gap: 6px">
+
+                  <label for="f-url" style="font-size: 14px; font-weight: 600">
+                    Store URL (optional)
+                  </label>
+
+                  <input id="f-url" name="q4_q4_textbox2" type="text" placeholder="yourstore.com"
+                    style="height: 50px; border: 1.5px solid #D9D2C7; border-radius: 12px; padding: 0 14px; font-family: Figtree, sans-serif; font-size: 16px; background: #FFFFFF; color: #000000; box-sizing: border-box; width: 100%">
+
+                </div>
+
+
+                <!-- Submit -->
+                <button id="free-audit-submit" type="submit" class="lift"
+                  style="min-height: 56px; border: 0; border-radius: 999px; background: #F4900C; color: #000000; font-family: Figtree, sans-serif; font-size: 17px; font-weight: 700; cursor: pointer">
+
+                  Get my free audit
+
+                </button>
+
+              </div>
+
+
+              <!-- SUCCESS MESSAGE -->
+              <div id="audit-success-message"
+                style="display: none; flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px 0">
+
+                <span
+                  style="width: 56px; height: 56px; border-radius: 50%; background: #F4900C; display: flex; align-items: center; justify-content: center">
+
+                  <svg viewBox="0 0 24 24" class="ic" style="width: 28px; height: 28px; stroke-width: 2.5"
+                    aria-hidden="true">
+
+                    <path d="M5 12l5 5 9-10"></path>
+
+                  </svg>
+
+                </span>
+
+
+                <h3
+                  style="font-family: Unbounded, sans-serif; font-size: 26px; line-height: 1.2; margin: 0; font-weight: 600">
+
+                  Audit request received
+
+                </h3>
+
+
+                <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3D3D3D; max-width: 40ch">
+
+                  We'll review your store and email you within one business day.
+                  Want it faster? Message us on WhatsApp.
+
+                </p>
+
+
+                <button type="button" id="audit-reset"
+                  style="min-height: 48px; padding: 0 22px; border: 2px solid #000000; border-radius: 999px; background: #FFFFFF; color: #000000; font-family: Figtree, sans-serif; font-size: 16px; font-weight: 600; cursor: pointer">
+
+                  Send another request
+
+                </button>
+
+              </div>
+
+            </form>
+
+
+            <!-- ONE HIDDEN IFRAME ONLY -->
+            <iframe name="jotform-submit-frame" id="jotform-submit-frame" style="display:none;">
+            </iframe>
+
+          </div>
+
+        </div>
+
+
+
+
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="page-end" style="background: #FFFFFF; padding: 56px clamp(20px, 4vw, 40px) 40px">
+        <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
+            <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 14px">
+              <img src="./assets/e0e519c4a94a514a05997c1af0b75bb5.png" alt="BriskCoders"
+                style="height: 44px; width: auto; align-self: flex-start">
+              <span style="font-size: 15px; color: #5C5C5C">Let's start working together</span>
+              <a href="mailto:info@briskcoders.com"
+                style="font-family: Unbounded, sans-serif; font-weight: 600; font-size: clamp(20px, 2.4vw, 32px); color: #000000; text-decoration: none; word-break: break-word">info@briskcoders.com</a>
+            </div>
+            <nav aria-label="Footer"
+              style="display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 15px; font-weight: 500; align-content: flex-start">
+              <a class="navlink" href="#work" style="color: #000000; text-decoration: none">Work</a>
+              <a class="navlink" href="#results" style="color: #000000; text-decoration: none">Results</a>
+              <a class="navlink" href="#process" style="color: #000000; text-decoration: none">Process</a>
+              <a class="navlink" href="#reviews" style="color: #000000; text-decoration: none">Reviews</a>
+              <a class="navlink" href="#faq" style="color: #000000; text-decoration: none">FAQ</a>
+            </nav>
+            <div
+              style="display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 15px; font-weight: 600; align-content: flex-start">
+              <a href="#top" style="color: #000000">Instagram</a>
+              <a href="#top" style="color: #000000">LinkedIn</a>
+              <a href="#top" style="color: #000000">Facebook</a>
+            </div>
+          </div>
+          <div
+            style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 22px; border-top: 1px solid #EFE7DC; font-size: 13px; color: #5C5C5C">
+            <span>© 2026 BriskCoders. All rights reserved.</span>
+            <span>Shopify is a trademark of Shopify Inc.</span>
+          </div>
+        </div>
+      </footer>
+
+      <!-- mobile sticky action bar -->
+      <div class="mbar"
+        style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255,255,255,0.97); border-top: 1px solid #EFE7DC; box-sizing: border-box">
+        <a href="#contact"
+          style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 999px; background: #F4900C; color: #000000; font-weight: 700; font-size: 16px; text-decoration: none">Get
+          my free audit</a>
+        <a href="https://wa.me/" aria-label="Chat on WhatsApp"
+          style="flex: none; width: 52px; height: 52px; border-radius: 50%; background: #000000; color: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg
+            viewBox="0 0 24 24" class="ic" style="width: 22px; height: 22px" aria-hidden="true">
+            <path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5z"></path>
+            <path d="M9 9.5c.3 2.4 2.1 4.2 4.5 4.5"></path>
+          </svg></a>
+      </div>
+
+    </div>
+  </x-dc>
+  <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8000}}'>
+class Component extends DCLogic {
+  _init() {
+    if (this._ready) return;
+    this._ready = true;
+    this._cards = [];
+    this._refs = [0, 1, 2, 3].map((i) => (el) => { this._cards[i] = el; });
+    this._tRef = (el) => { this._tEl = el; };
+    this._tPrev = () => { if (this._tEl && this._tEl.scrollBy) this._tEl.scrollBy({ left: -316, behavior: 'smooth' }); };
+    this._tNext = () => { if (this._tEl && this._tEl.scrollBy) this._tEl.scrollBy({ left: 316, behavior: 'smooth' }); };
+    this._toggles = [0, 1, 2, 3, 4, 5].map((i) => () => {
+      const next = this._leaks().slice();
+      next[i] = !next[i];
+      this.setState({ leaks: next });
+    });
+    this._tick = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        const vh = window.innerHeight || 800;
+        let a = 0;
+        if (vh < 1600) {
+          this._cards.forEach((el, i) => {
+            if (el && el.getBoundingClientRect().top < vh * 0.5) a = i;
+          });
+        }
+        const cur = (this.state && this.state.active) || 0;
+        if (a !== cur) this.setState({ active: a });
+      });
+    };
+    this._submit = () => this.setState({ sent: true });
+    this._reset = () => this.setState({ sent: false });
+  }
+  _leaks() {
+    return (this.state && this.state.leaks) || [false, false, false, false, false, false];
+  }
+  componentDidMount() {
+    this._init();
+    document.addEventListener('scroll', this._tick, true);
+    window.addEventListener('resize', this._tick);
+    this._tick();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this._tick, true);
+    window.removeEventListener('resize', this._tick);
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+  renderVals() {
+    this._init();
+    const active = (this.state && this.state.active) || 0;
+    const sent = !!(this.state && this.state.sent);
+    const leaks = this._leaks();
+    const count = leaks.filter(Boolean).length;
+    const nav = (i) => i === active
+      ? { color: '#000000', bar: '36px', barBg: '#F4900C' }
+      : { color: '#6B6B6B', bar: '14px', barBg: '#D9CFC2' };
+    const fx = (i) => i < active
+      ? { t: 'scale(0.94)', f: 'brightness(0.88)' }
+      : { t: 'scale(1)', f: 'none' };
+    const lk = (i) => {
+      const on = !!leaks[i];
+      return {
+        on: on,
+        pressed: on ? 'true' : 'false',
+        border: on ? '#F4900C' : '#333333',
+        bg: on ? '#1C1309' : '#0F0F0F',
+        box: on ? '#F4900C' : 'transparent',
+        boxBorder: on ? '#F4900C' : '#5A5A5A',
+        tick: on ? '#000000' : 'transparent',
+        toggle: this._toggles[i]
+      };
+    };
+    return {
+      n0: nav(0), n1: nav(1), n2: nav(2), n3: nav(3),
+      fx0: fx(0), fx1: fx(1), fx2: fx(2), fx3: fx(3),
+      ref0: this._refs[0], ref1: this._refs[1], ref2: this._refs[2], ref3: this._refs[3],
+      l0: lk(0), l1: lk(1), l2: lk(2), l3: lk(3), l4: lk(4), l5: lk(5),
+      leakCount: String(count),
+      meterW: Math.round((count / 6) * 100) + '%',
+      hasLeaks: count > 0,
+      noLeaks: count === 0,
+      tRef: this._tRef, tPrev: this._tPrev, tNext: this._tNext,
+      sent: sent,
+      notSent: !sent,
+      submit: this._submit,
+      reset: this._reset
+    };
+  }
+}
+</script>
+
+
+<script>
+  (function () {
+
+    console.log('Audit form script loaded');
+
+    let isSubmitting = false;
+
+    /*
+    * Find the form elements.
+    * Shopify may render the section after the script,
+    * so we don't depend on these existing immediately.
+    */
+    function getAuditElements() {
+      return {
+        form: document.getElementById('free-audit-form'),
+        formContent: document.getElementById('audit-form-content'),
+        successMessage: document.getElementById('audit-success-message'),
+        submitButton: document.getElementById('free-audit-submit'),
+        resetButton: document.getElementById('audit-reset')
+      };
+    }
+
+
+    /*
+    * Handle form submission
+    */
+    document.addEventListener('submit', function (event) {
+
+      const form = event.target;
+
+      if (!form || form.id !== 'free-audit-form') {
+        return;
+      }
+
+      console.log('Audit form submitted');
+
+      isSubmitting = true;
+
+      const elements = getAuditElements();
+      const button = elements.submitButton;
+
+      if (button) {
+        button.disabled = true;
+        button.innerHTML = 'Sending...';
+        button.style.opacity = '0.7';
+        button.style.cursor = 'wait';
+      }
+
+    }, true);
+
+
+    /*
+    * Listen for Jotform messages
+    */
+    window.addEventListener('message', function (event) {
+
+      console.log('Message received:', event.data);
+
+      const data = event.data;
+
+      /*
+      * Ignore everything except Jotform's
+      * submission-completed message.
+      */
+      if (
+        !data ||
+        data.action !== 'submission-completed' ||
+        String(data.formID) !== '262803056947059'
+      ) {
+        return;
+      }
+
+
+      console.log('JOTFORM SUBMISSION CONFIRMED');
+
+
+      /*
+      * We received the confirmation from Jotform.
+      */
+      isSubmitting = false;
+
+
+      /*
+      * Find elements NOW.
+      */
+      const elements = getAuditElements();
+
+      const form = elements.form;
+      const formContent = elements.formContent;
+      const successMessage = elements.successMessage;
+      const submitButton = elements.submitButton;
+
+
+      console.log('Audit elements:', {
+        form: form,
+        formContent: formContent,
+        successMessage: successMessage,
+        submitButton: submitButton
+      });
+
+
+      /*
+      * If Shopify hasn't rendered the section yet,
+      * retry shortly.
+      */
+      if (!formContent || !successMessage) {
+
+        console.warn(
+          'Audit success elements not found. Retrying...'
+        );
+
+        let attempts = 0;
+
+        const retry = setInterval(function () {
+
+          attempts++;
+
+          const retryElements = getAuditElements();
+
+          if (
+            retryElements.formContent &&
+            retryElements.successMessage
+          ) {
+
+            clearInterval(retry);
+
+            console.log(
+              'Audit elements found on retry.'
+            );
+
+            showSuccess(retryElements);
+
+          }
+
+          /*
+          * Stop after 5 seconds.
+          */
+          if (attempts >= 50) {
+
+            clearInterval(retry);
+
+            console.error(
+              'Could not find audit success elements.'
+            );
+
+          }
+
+        }, 100);
+
+        return;
+      }
+
+
+      showSuccess(elements);
+
+    });
+
+
+    /*
+    * Show success state
+    */
+    function showSuccess(elements) {
+
+      const formContent = elements.formContent;
+      const successMessage = elements.successMessage;
+      const submitButton = elements.submitButton;
+
+      console.log('Showing success message');
+
+
+      /*
+      * Hide the original form fields
+      */
+      formContent.style.display = 'none';
+
+
+      /*
+      * Show success message
+      */
+      successMessage.style.display = 'flex';
+
+
+      /*
+      * Restore button state
+      */
+      if (submitButton) {
+
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Get my free audit';
+        submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+
+      }
+
+
+      console.log(
+        'SUCCESS MESSAGE DISPLAYED'
+      );
+
+    }
+
+
+    /*
+    * Reset button
+    *
+    * Event delegation is used because Shopify
+    * can dynamically render the section.
+    */
+    document.addEventListener('click', function (event) {
+
+      const resetButton =
+        event.target.closest('#audit-reset');
+
+      if (!resetButton) {
+        return;
+      }
+
+
+      console.log('Resetting audit form');
+
+
+      const elements = getAuditElements();
+
+      const form = elements.form;
+      const formContent = elements.formContent;
+      const successMessage = elements.successMessage;
+      const submitButton = elements.submitButton;
+
+
+      /*
+      * Reset form fields
+      */
+      if (form) {
+        form.reset();
+      }
+
+
+      /*
+      * Hide success message
+      */
+      if (successMessage) {
+        successMessage.style.display = 'none';
+      }
+
+
+      /*
+      * Show form again
+      */
+      if (formContent) {
+        formContent.style.display = 'flex';
+      }
+
+
+      /*
+      * Restore button
+      */
+      if (submitButton) {
+
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Get my free audit';
+        submitButton.style.opacity = '1';
+        submitButton.style.cursor = 'pointer';
+
+      }
+
+
+      isSubmitting = false;
+
+    });
+
+
+  })();
+</script>
+
+</body>
+
+</html>
